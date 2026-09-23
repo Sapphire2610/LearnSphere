@@ -118,3 +118,10 @@ The system supports students, instructors, and administrators with features such
                     │     MongoDB Atlas     │
                     │       Database        │
                     └──────────────────────┘
+
+## 📸 Screenshots
+### 🏠 Landing Page
+
+The LearnSphere landing page provides a clean and welcoming interface for discovering courses and accessing the learning platform.
+
+![LearnSphere Landing Page](images/landing-page.png)
