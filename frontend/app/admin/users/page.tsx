@@ -35,7 +35,7 @@ export default function AdminUsersPage() {
                 return;
             }
 
-            fetch("http://localhost:5000/api/admin/users", {
+            fetch("https://learnsphere-24zf.onrender.com/api/admin/users", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -77,7 +77,7 @@ export default function AdminUsersPage() {
 
         try {
             const response = await fetch(
-                `http://localhost:5000/api/admin/users/${userId}/role`,
+                `https://learnsphere-24zf.onrender.com/api/admin/users/${userId}/role`,
                 {
                     method: "PUT",
                     headers: {
@@ -123,7 +123,7 @@ export default function AdminUsersPage() {
 
         try {
             const response = await fetch(
-                `http://localhost:5000/api/admin/users/${userId}`,
+                `https://learnsphere-24zf.onrender.com/api/admin/users/${userId}`,
                 {
                     method: "DELETE",
                     headers: {

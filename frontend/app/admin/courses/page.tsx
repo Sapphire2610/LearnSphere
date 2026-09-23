@@ -46,7 +46,7 @@ export default function AdminCoursesPage() {
                 return;
             }
 
-            fetch("http://localhost:5000/api/admin/courses", {
+            fetch("https://learnsphere-24zf.onrender.com/api/admin/courses", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -86,7 +86,7 @@ export default function AdminCoursesPage() {
 
         try {
             const response = await fetch(
-                `http://localhost:5000/api/admin/courses/${courseId}/publish`,
+                `https://learnsphere-24zf.onrender.com/api/admin/courses/${courseId}/publish`,
                 {
                     method: "PUT",
                     headers: {
@@ -132,7 +132,7 @@ export default function AdminCoursesPage() {
 
         try {
             const response = await fetch(
-                `http://localhost:5000/api/admin/courses/${courseId}`,
+                `https://learnsphere-24zf.onrender.com/api/admin/courses/${courseId}`,
                 {
                     method: "DELETE",
                     headers: {

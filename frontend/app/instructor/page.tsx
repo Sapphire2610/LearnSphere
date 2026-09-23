@@ -67,7 +67,7 @@ export default function InstructorDashboard() {
             setLoading(true);
 
             const response = await fetch(
-                "http://localhost:5000/api/courses",
+                "https://learnsphere-24zf.onrender.com/api/courses",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

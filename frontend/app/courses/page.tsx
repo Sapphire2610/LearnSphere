@@ -43,7 +43,7 @@ export default function CoursesPage() {
     const fetchCourses = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/courses"
+          "https://learnsphere-24zf.onrender.com/api/courses"
         );
 
         const data = await response.json();
@@ -56,7 +56,7 @@ export default function CoursesPage() {
 
         if (token) {
           const enrollmentResponse = await fetch(
-            "http://localhost:5000/api/courses/my-courses",
+            "https://learnsphere-24zf.onrender.com/api/courses/my-courses",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -106,7 +106,7 @@ export default function CoursesPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/courses/${courseId}/enroll`,
+        `https://learnsphere-24zf.onrender.com/api/courses/${courseId}/enroll`,
         {
           method: "POST",
           headers: {
@@ -127,7 +127,7 @@ export default function CoursesPage() {
       setMessage("🎉 Successfully enrolled!");
 
       const enrollmentResponse = await fetch(
-        "http://localhost:5000/api/courses/my-courses",
+        "https://learnsphere-24zf.onrender.com/api/courses/my-courses",
         {
           headers: {
             Authorization: `Bearer ${token}`,

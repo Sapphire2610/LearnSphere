@@ -87,7 +87,7 @@ export default function AnalyticsPage() {
 
                 const response =
                     await fetch(
-                        `http://localhost:5000/api/analytics/course/${courseId}`,
+                        `https://learnsphere-24zf.onrender.com/api/analytics/course/${courseId}`,
                         {
                             headers: {
                                 Authorization:

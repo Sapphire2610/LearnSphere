@@ -87,7 +87,7 @@ export default function AssessmentPage() {
 
         const assessmentResponse =
           await fetch(
-            `http://localhost:5000/api/assessments/${assessmentId}`,
+            `https://learnsphere-24zf.onrender.com/api/assessments/${assessmentId}`,
             {
               headers: {
                 Authorization:
@@ -125,7 +125,7 @@ export default function AssessmentPage() {
 
         const questionResponse =
           await fetch(
-            `http://localhost:5000/api/questions/assessment/${assessmentId}`,
+            `https://learnsphere-24zf.onrender.com/api/questions/assessment/${assessmentId}`,
             {
               headers: {
                 Authorization:
@@ -254,7 +254,7 @@ export default function AssessmentPage() {
 
       const response =
         await fetch(
-          "http://localhost:5000/api/results/submit",
+          "https://learnsphere-24zf.onrender.com/api/results/submit",
           {
             method: "POST",
 

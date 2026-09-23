@@ -57,7 +57,7 @@ export default function LearnPage() {
 
         // Get course modules
         const moduleResponse = await fetch(
-          `http://localhost:5000/api/modules/course/${courseId}`
+          `https://learnsphere-24zf.onrender.com/api/modules/course/${courseId}`
         );
 
         const moduleData = await moduleResponse.json();
@@ -78,7 +78,7 @@ export default function LearnPage() {
 
         for (const module of loadedModules) {
           const lessonResponse = await fetch(
-            `http://localhost:5000/api/lessons/module/${module._id}`
+            `https://learnsphere-24zf.onrender.com/api/lessons/module/${module._id}`
           );
 
           const lessonData = await lessonResponse.json();
@@ -112,7 +112,7 @@ export default function LearnPage() {
 
         if (token) {
           const progressResponse = await fetch(
-            `http://localhost:5000/api/progress/course/${courseId}`,
+            `https://learnsphere-24zf.onrender.com/api/progress/course/${courseId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -170,7 +170,7 @@ export default function LearnPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/progress/complete",
+        "https://learnsphere-24zf.onrender.com/api/progress/complete",
         {
           method: "POST",
           headers: {

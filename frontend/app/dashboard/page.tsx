@@ -65,13 +65,13 @@ export default function Dashboard() {
     const fetchDashboardData = async () => {
       try {
         const [coursesResponse, resultsResponse] = await Promise.all([
-          fetch("http://localhost:5000/api/courses/my-courses", {
+          fetch("https://learnsphere-24zf.onrender.com/api/courses/my-courses", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
 
-          fetch("http://localhost:5000/api/results/my-results", {
+          fetch("https://learnsphere-24zf.onrender.com/api/results/my-results", {
             headers: {
               Authorization: `Bearer ${token}`,
             },

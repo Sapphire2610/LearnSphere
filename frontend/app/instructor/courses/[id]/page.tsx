@@ -91,7 +91,7 @@ export default function CourseBuilderPage() {
       // ------------------------------------------
 
       const courseResponse = await fetch(
-        `http://localhost:5000/api/courses/${courseId}`,
+        `https://learnsphere-24zf.onrender.com/api/courses/${courseId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -116,7 +116,7 @@ export default function CourseBuilderPage() {
       // ------------------------------------------
 
       const moduleResponse = await fetch(
-        `http://localhost:5000/api/modules/course/${courseId}`,
+        `https://learnsphere-24zf.onrender.com/api/modules/course/${courseId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -154,7 +154,7 @@ export default function CourseBuilderPage() {
           for (const module of sortedModules) {
             try {
               const lessonResponse = await fetch(
-                `http://localhost:5000/api/lessons/module/${module._id}`,
+                `https://learnsphere-24zf.onrender.com/api/lessons/module/${module._id}`,
                 {
                   headers: {
                     Authorization: `Bearer ${token}`,
@@ -238,7 +238,7 @@ export default function CourseBuilderPage() {
       setAddingModule(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/modules",
+        "https://learnsphere-24zf.onrender.com/api/modules",
         {
           method: "POST",
           headers: {
@@ -354,7 +354,7 @@ export default function CourseBuilderPage() {
       );
 
       const response = await fetch(
-        "http://localhost:5000/api/lessons",
+        "https://learnsphere-24zf.onrender.com/api/lessons",
         {
           method: "POST",
           headers: {

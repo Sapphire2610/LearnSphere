@@ -68,7 +68,7 @@ export default function AdminAssessmentsPage() {
             }
 
             fetch(
-                "http://localhost:5000/api/admin/assessments",
+                "https://learnsphere-24zf.onrender.com/api/admin/assessments",
                 {
                     headers: {
                         Authorization:

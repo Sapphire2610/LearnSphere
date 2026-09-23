@@ -39,7 +39,7 @@ export default function AdminDashboard() {
                 return;
             }
 
-            fetch("http://localhost:5000/api/admin/dashboard", {
+            fetch("https://learnsphere-24zf.onrender.com/api/admin/dashboard", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

@@ -99,7 +99,7 @@ export default function InstructorAssessmentsPage() {
       const [courseResponse, moduleResponse, assessmentResponse] =
         await Promise.all([
           fetch(
-            `http://localhost:5000/api/courses/${courseId}`,
+            `https://learnsphere-24zf.onrender.com/api/courses/${courseId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -108,7 +108,7 @@ export default function InstructorAssessmentsPage() {
           ),
 
           fetch(
-            `http://localhost:5000/api/modules/course/${courseId}`,
+            `https://learnsphere-24zf.onrender.com/api/modules/course/${courseId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -117,7 +117,7 @@ export default function InstructorAssessmentsPage() {
           ),
 
           fetch(
-            `http://localhost:5000/api/assessments/course/${courseId}`,
+            `https://learnsphere-24zf.onrender.com/api/assessments/course/${courseId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -185,7 +185,7 @@ export default function InstructorAssessmentsPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/assessments",
+        "https://learnsphere-24zf.onrender.com/api/assessments",
         {
           method: "POST",
           headers: {
@@ -280,7 +280,7 @@ export default function InstructorAssessmentsPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/questions",
+        "https://learnsphere-24zf.onrender.com/api/questions",
         {
           method: "POST",
           headers: {
