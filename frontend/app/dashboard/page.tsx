@@ -326,21 +326,21 @@ export default function Dashboard() {
                   <div className="p-6">
 
                     <span className="inline-block rounded-full bg-[#fff0f5] px-3 py-1 text-xs text-[#ef6f9f]">
-                      {enrollment.course.category || "General"}
+                      {enrollment.course?.category || "General"}
                     </span>
 
                     <h3 className="mt-3 text-xl font-bold">
-                      {enrollment.course.title}
+                      {enrollment.course?.title}
                     </h3>
 
                     <p className="mt-2 text-sm text-[#81778d] line-clamp-2">
-                      {enrollment.course.description}
+                      {enrollment.course?.description}
                     </p>
 
                     <div className="mt-4 flex items-center justify-between text-sm">
 
                       <span className="text-[#81778d]">
-                        🌱 {enrollment.course.level}
+                        🌱 {enrollment.course?.level}
                       </span>
 
                       <span
