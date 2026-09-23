@@ -131,3 +131,9 @@ The LearnSphere landing page provides a clean and welcoming interface for discov
 The student dashboard provides an overview of enrolled courses, learning progress, assessment performance, and quick access to continue learning.
 
 ![LearnSphere Student Dashboard](images/student-dashboard.png)
+
+### 📚 Course Explorer
+
+The Course Explorer allows students to discover learning content using keyword search and filters based on category, difficulty level, and price.
+
+![LearnSphere Course Explorer](images/course-explorer.png)
