@@ -137,3 +137,16 @@ The student dashboard provides an overview of enrolled courses, learning progres
 The Course Explorer allows students to discover learning content using keyword search and filters based on category, difficulty level, and price.
 
 ![LearnSphere Course Explorer](images/course-explorer.png)
+
+### 📖 Course Details
+
+The course details page provides students with an overview of the course, instructor information, difficulty level, available content, and learning outcomes.
+
+![LearnSphere Course Details](images/course-details.png)
+
+### 🎥 Learning Experience
+
+The learning interface provides video-based lessons, structured course content, lesson completion tracking, and real-time course progress.
+
+![LearnSphere Learning Page](images/learning-page.png)
+
