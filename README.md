@@ -150,3 +150,14 @@ The learning interface provides video-based lessons, structured course content, 
 
 ![LearnSphere Learning Page](images/learning-page.png)
 
+### 📝 Assessments
+
+Learners can take structured multiple-choice assessments with marks, passing criteria, time limits, and question progress tracking.
+
+![LearnSphere Assessment Page](images/assessment-page.png)
+
+### 🎯 Assessment Results
+
+After completing an assessment, learners receive an instant result showing their score, marks obtained, percentage, and pass/fail status.
+
+![LearnSphere Assessment Result](images/result-page.png)
