@@ -326,7 +326,7 @@ export default function Dashboard() {
                   <div className="p-6">
 
                     <span className="inline-block rounded-full bg-[#fff0f5] px-3 py-1 text-xs text-[#ef6f9f]">
-                      {enrollment.course.category}
+                      {enrollment.course.category || "General"}
                     </span>
 
                     <h3 className="mt-3 text-xl font-bold">
