@@ -125,3 +125,9 @@ The system supports students, instructors, and administrators with features such
 The LearnSphere landing page provides a clean and welcoming interface for discovering courses and accessing the learning platform.
 
 ![LearnSphere Landing Page](images/landing-page.png)
+
+### 🎓 Student Dashboard
+
+The student dashboard provides an overview of enrolled courses, learning progress, assessment performance, and quick access to continue learning.
+
+![LearnSphere Student Dashboard](images/student-dashboard.png)
