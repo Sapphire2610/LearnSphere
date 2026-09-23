@@ -1,169 +1,200 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
-  const router = useRouter();
+    const router = useRouter();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  const handleLogin = async (e: FormEvent) => {
-    e.preventDefault();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
-    setError("");
-    setLoading(true);
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
 
-    try {
-      const response = await fetch(
-        "https://learnsphere-24zf.onrender.com/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
+        setError("");
+
+        if (!email || !password) {
+            setError("Please enter your email and password.");
+            return;
         }
-      );
 
-      const data = await response.json();
+        try {
+            setLoading(true);
 
-      if (!response.ok) {
-        setError(data.message || "Login failed");
-        return;
-      }
+            const response = await fetch(
+                "https://learnsphere-24zf.onrender.com/api/auth/login",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password,
+                    }),
+                }
+            );
 
-      // Save login information
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+            const data = await response.json();
 
-      // Role-based redirection
-      if (data.user.role === "admin") {
-        router.push("/admin");
-      } else if (data.user.role === "instructor") {
-        router.push("/instructor");
-      } else {
-        router.push("/dashboard");
-      }
-    } catch (error) {
-      setError("Unable to connect to LearnSphere server.");
-    } finally {
-      setLoading(false);
-    }
-  };
+            if (!response.ok) {
+                setError(
+                    data.message || "Invalid email or password."
+                );
+                return;
+            }
 
-  return (
-    <main className="min-h-screen bg-[#fffaf8] flex items-center justify-center px-6">
-      <div className="w-full max-w-md">
+            // Store login information
+            localStorage.setItem("token", data.token);
+            localStorage.setItem(
+                "user",
+                JSON.stringify(data.user)
+            );
 
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="text-5xl mb-3">
-            🎓
-          </div>
+            // Redirect based on role
+            if (data.user.role === "admin") {
+                router.push("/admin");
+            } else if (data.user.role === "instructor") {
+                router.push("/instructor");
+            } else {
+                router.push("/dashboard");
+            }
 
-          <h1 className="text-3xl font-bold text-[#4b4263]">
-            Learn<span className="text-[#ef6f9f]">Sphere</span>
-          </h1>
+        } catch (error) {
+            console.error("Login error:", error);
 
-          <p className="mt-2 text-[#81778d]">
-            Welcome back, learner! 🌸
-          </p>
-        </div>
+            setError(
+                "Unable to connect to LearnSphere server."
+            );
 
-        {/* Login Card */}
-        <div className="bg-white rounded-[2rem] border border-pink-100 shadow-lg p-8">
+        } finally {
+            setLoading(false);
+        }
+    };
 
-          <div className="text-center mb-7">
-            <h2 className="text-2xl font-bold text-[#4b4263]">
-              Welcome Back 💗
-            </h2>
+    return (
+        <main className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 flex items-center justify-center px-4">
 
-            <p className="mt-2 text-sm text-[#81778d]">
-              Login to continue your learning journey.
-            </p>
-          </div>
+            <div className="w-full max-w-md">
 
-          {/* Error */}
-          {error && (
-            <div className="mb-5 rounded-xl bg-red-50 border border-red-100 px-4 py-3 text-sm text-red-600">
-              🌷 {error}
+                <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/60 p-8">
+
+                    {/* Logo / Icon */}
+                    <div className="text-center mb-8">
+
+                        <div className="text-4xl mb-3">
+                            🌷
+                        </div>
+
+                        <h1 className="text-3xl font-bold text-gray-800">
+                            Welcome Back
+                        </h1>
+
+                        <p className="text-gray-500 mt-2">
+                            Login to continue learning with LearnSphere
+                        </p>
+
+                    </div>
+
+                    {/* Login Form */}
+                    <form
+                        onSubmit={handleLogin}
+                        className="space-y-5"
+                    >
+
+                        {/* Email */}
+                        <div>
+
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) =>
+                                    setEmail(e.target.value)
+                                }
+                                placeholder="Enter your email"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-300"
+                            />
+
+                        </div>
+
+                        {/* Password */}
+                        <div>
+
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) =>
+                                    setPassword(e.target.value)
+                                }
+                                placeholder="Enter your password"
+                                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-300"
+                            />
+
+                        </div>
+
+                        {/* Error Message */}
+                        {error && (
+                            <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl p-3">
+                                {error}
+                            </div>
+                        )}
+
+                        {/* Login Button */}
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full py-3 rounded-xl bg-pink-500 hover:bg-pink-600 text-white font-semibold transition disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                            {loading
+                                ? "Logging in..."
+                                : "Login"}
+                        </button>
+
+                    </form>
+
+                    {/* Register Link */}
+                    <div className="text-center mt-6 text-sm text-gray-600">
+
+                        Don't have an account?{" "}
+
+                        <Link
+                            href="/register"
+                            className="text-pink-500 font-semibold hover:underline"
+                        >
+                            Create Account
+                        </Link>
+
+                    </div>
+
+                    {/* Back to Home */}
+                    <div className="text-center mt-4">
+
+                        <Link
+                            href="/"
+                            className="text-sm text-gray-500 hover:text-pink-500 transition"
+                        >
+                            ← Back to Home
+                        </Link>
+
+                    </div>
+
+                </div>
+
             </div>
-          )}
 
-          <form onSubmit={handleLogin} className="space-y-5">
-
-            {/* Email */}
-            <div>
-              <label className="block mb-2 text-sm font-medium text-[#5b526d]">
-                Email address
-              </label>
-
-              <input
-                type="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full rounded-xl border border-pink-100 bg-[#fffafb] px-4 py-3 outline-none focus:ring-2 focus:ring-pink-200"
-              />
-            </div>
-
-            {/* Password */}
-            <div>
-              <label className="block mb-2 text-sm font-medium text-[#5b526d]">
-                Password
-              </label>
-
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="w-full rounded-xl border border-pink-100 bg-[#fffafb] px-4 py-3 outline-none focus:ring-2 focus:ring-pink-200"
-              />
-            </div>
-
-            {/* Login Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full rounded-xl bg-[#ef6f9f] py-3.5 font-semibold text-white shadow-md hover:bg-[#e85c91] transition disabled:opacity-60"
-            >
-              {loading ? "Logging in... 🌸" : "Login 💕"}
-            </button>
-
-          </form>
-
-          {/* Register */}
-          <div className="mt-7 text-center text-sm text-[#81778d]">
-            Don't have an account?{" "}
-
-            <button
-              onClick={() => router.push("/register")}
-              className="font-semibold text-[#ef6f9f] hover:underline"
-            >
-              Create one 🌷
-            </button>
-          </div>
-        </div>
-
-        {/* Back */}
-        <button
-          onClick={() => router.push("/")}
-          className="block mx-auto mt-6 text-sm text-[#81778d] hover:text-[#ef6f9f]"
-        >
-          ← Back to LearnSphere
-        </button>
-
-      </div>
-    </main>
-  );
+        </main>
+    );
 }
